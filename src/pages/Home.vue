@@ -1,5 +1,15 @@
 <template>
   <div class="portifolio-page">
+    <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
+      <div class="portifolio-page__greetings__background bg-grey-8 absolute-full" />
+      <div class="portifolio-page__greetings__text full-height text-h5 text-white z-top absolute-full items-center">
+        <div class="relative-position fit row">
+          <div class="absolute-center portifolio-page__greetings__text__hello">Olá, meu nome é Leonardo.</div>
+          <div class="absolute-center portifolio-page__greetings__text__welcome">Seja bem vindo(a) ao meu portifólio.
+          </div>
+        </div>
+      </div>
+    </div>
     <div ref="parallax" class="portifolio-page__parallax-box" @scroll="paralaxEffect">
       <div class="portifolio-page__parallax-box__box">
         <div class="portifolio-page__parallax-box__box__landscape">
@@ -131,30 +141,43 @@
 
         </div>
         <div class="full-height justify-center items-center row">
-          <div
-            class="text-white portifolio-page--background-1 row q-gutter-lg justify-center portifolio-page__content full-width">
-            <div class="col-12 col-sm-4 row justify-center">
-              <q-avatar rounded size="250px">
-                <img src="../assets/perfil.jpg">
-              </q-avatar>
-            </div>
+          <div class="row justify-center portifolio-page__content full-width">
+            <div class="full-width row">
+              <div class="col-12 col-md-4 row portifolio-page__content__profile-photo justify-center"
+                :class="profilePhotoClasses">
+                <q-avatar rounded size="250px">
+                  <q-img src="../assets/perfil.jpg" />
+                </q-avatar>
+              </div>
 
-            <div class="flex justify-center col-grow column">
-              <div class="text-h5">Leonardo da Silva Marco</div>
-              <div class="text-subtitle1">Programador Front-end</div>
-              <div>
-                <q-btn dense target="_blank" class="q-mt-sm text-subtitle1 portifolio-page__content__contact"
-                  href="https://wa.me/5511997822730" label="Contato" />
+              <div class="flex text-white q-py-lg justify-end q-my-md col-grow column" :class="profileContentClasses">
+                <div class="text-h5">Leonardo da Silva Marco</div>
+                <div class="text-subtitle1">Programador Front-end</div>
+                <div>
+                  <q-btn dense target="_blank" class="q-mt-sm text-subtitle1 portifolio-page__content__contact"
+                    href="https://wa.me/5511997822730" label="Contato" />
+                </div>
               </div>
             </div>
 
-            <div class="text-white row q-gutter-lg justify-center full-width">
+            <div class="bg-grey-3 text-grey-9 q-py-lg row q-gutter-lg justify-center full-width">
               <div class="text-h5">Sobre mim</div>
-              <div>{{ aboutMe }}</div>
+              <div class="q-mb-xl">{{ aboutMe }}</div>
             </div>
-            <div class="text-white row q-gutter-lg justify-center full-width">Experiências</div>
-            <div class="text-white row q-gutter-lg justify-center full-width">Trabalho</div>
-            <div class="text-white row q-gutter-lg justify-center full-width">Contato</div>
+
+
+            <div class="bg-grey-3 q-py-lg row bg-separator q-gutter-lg justify-center full-width">
+              <div class="text-h5">Experiências</div>
+              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
+            </div>
+            <div class="bg-grey-3 q-py-lg row q-gutter-lg justify-center full-width">
+              <div class="text-h5">A estrada até aqui</div>
+              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
+            </div>
+            <div class="bg-grey-3 q-py-lg row q-gutter-lg justify-center full-width">
+              <div class="text-h5">Entre em contato comigo</div>
+              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -168,11 +191,21 @@ export default ({
 
   data() {
     return {
-      scrollPosition: 0
+      scrollPosition: 0,
+      showGrettings: true
     }
   },
 
   computed: {
+    profilePhotoClasses() {
+      return this.$q.screen.lt.md && 'portifolio-page__content__profile-photo--mobile'
+    },
+
+    profileContentClasses() {
+      return this.$q.screen.lt.md && 'items-center'
+    },
+
+
     aboutMe() {
       return 'Olá sou Leonardo Marco. Tenho 28 anos e sou desenvolvedor frontend jr. Sou da cidade de Capela do alto - SP. Estou à procura de uma oportunidade de atuar como desenvolvedor front-end remoto ou presencial pela região de Sorocaba. Me formei em Análise e desenvolvimento de sistemas na Fatec de São Caetano do Sul em Dezembro de 2017. Criei este portifólio com o intuito de demonstrar meus conhecimentos e habilidades. Nele foi criado um projeto utilizando Vuejs em conjunto com Quasar sendo essas ferramentas as quais possuo maior domínio além de HTML, CSS, JS. Estou sempre aberto a estudar novas ferramentas e tecnologias, para assim ampliar meus conhecimentos.'
     }
@@ -180,11 +213,11 @@ export default ({
 
   mounted() {
     this.paralaxEffect()
+    this.grettings()
   },
 
   watch: {
     scrollPosition(value) {
-      console.log(this.$refs.layer1.styles)
       this.$refs.layer1.style.transform = `translateY(${value * 0.96}px)`
       this.$refs.layer2.style.transform = `translateY(${value * 0.92}px)`
       this.$refs.layer3.style.transform = `translateY(${value * 0.9}px)`
@@ -198,11 +231,16 @@ export default ({
   },
 
   methods: {
+    grettings() {
+      setTimeout(() => {
+        this.showGrettings = false
+      }, 18000)
+    },
+
     paralaxEffect() {
       const scrollEl = this.$refs.parallax
       if (this.scrollPosition !== scrollEl.scrollTop) {
         this.scrollPosition = scrollEl.scrollTop
-        // console.log(this.$refs.layer)
       }
     }
   }
@@ -213,12 +251,195 @@ export default ({
 <style lang="scss">
 body {
   overflow: hidden;
-
+  font-family: Quicksand, Arial, sans-serif;
 }
 
 .portifolio-page {
+  &__greetings {
+    opacity: 1;
+    -webkit-animation: fadeOut 2s ease-in-out 16s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadeOut 2s ease-in-out 16s;
+    /* Firefox < 16 */
+    -ms-animation: fadeOut 2s ease-in-out 16s;
+    /* Internet Explorer */
+    -o-animation: fadeOut 2s ease-in-out 16s;
+    /* Opera < 12.1 */
+    animation: fadeOut 2s ease-in-out 16s;
+
+    &__background {
+      opacity: .4;
+    }
+
+    &__text {
+      text-shadow: 2px 2px 20px #000;
+
+      &__hello {
+        opacity: 0;
+        -webkit-animation: fadeInOut 8s ease-in-out;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadeInOut 8s ease-in-out;
+        /* Firefox < 16 */
+        -ms-animation: fadeInOut 8s ease-in-out;
+        /* Internet Explorer */
+        -o-animation: fadeInOut 8s ease-in-out;
+        /* Opera < 12.1 */
+        animation: fadeInOut 8s ease-in-out;
+      }
+
+      &__welcome {
+        opacity: 0;
+        -webkit-animation: fadeInOut 8s ease-in-out 8s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadeInOut 8s ease-in-out 8s;
+        /* Firefox < 16 */
+        -ms-animation: fadeInOut 8s ease-in-out 8s;
+        /* Internet Explorer */
+        -o-animation: fadeInOut 8s ease-in-out 8s;
+        /* Opera < 12.1 */
+        animation: fadeInOut 8s ease-in-out 8s;
+      }
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Firefox < 16 */
+    @-moz-keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Internet Explorer */
+    @-ms-keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Opera < 12.1 */
+    @-o-keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Firefox < 16 */
+    @-moz-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Internet Explorer */
+    @-ms-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Opera < 12.1 */
+    @-o-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
   &__content {
-    // height: 350px;
+    &__profile-photo {
+      margin-bottom: -50px;
+
+      &--mobile {
+        margin-bottom: 0;
+        margin-top: 250px;
+      }
+    }
 
     &__contact {
       background-color: #f04f30;
@@ -231,7 +452,6 @@ body {
 
   &__parallax-box {
     background: var(--c10);
-    color: #fff;
     height: 100vh;
     overflow-y: scroll;
 
