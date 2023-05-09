@@ -2,10 +2,15 @@
   <div class="portifolio-page">
     <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
       <div class="portifolio-page__greetings__background bg-grey-8 absolute-full" />
-      <div class="portifolio-page__greetings__text full-height text-h5 text-white z-top absolute-full items-center">
+      <div class="portifolio-page__greetings__text full-height text-white z-top absolute-full items-center"
+        :class="grettingsClasses">
         <div class="relative-position fit row">
-          <div class="absolute-center portifolio-page__greetings__text__hello">Olá, meu nome é Leonardo.</div>
-          <div class="absolute-center portifolio-page__greetings__text__welcome">Seja bem vindo(a) ao meu portifólio.
+          <div class="absolute-center row full-width justify-center portifolio-page__greetings__text__hello">Olá, meu nome
+            é Leonardo.
+          </div>
+          <div class="absolute-center row full-width justify-center portifolio-page__greetings__text__welcome">Seja bem
+            vindo(a) ao meu
+            portifólio.
           </div>
         </div>
       </div>
@@ -136,12 +141,16 @@
                   style="fill: var(--c10);" />
               </svg>
             </div>
-
           </div>
 
+
         </div>
-        <div class="full-height justify-center items-center row">
-          <div class="row justify-center portifolio-page__content full-width">
+        <div class="full-height relative-position justify-center items-center row">
+
+          <q-icon ref="arrow" name="keyboard_double_arrow_down" class="q-mt-xl absolute-top-center" color="white"
+            size="xs" />
+
+          <div class="row justify-center portifolio-page__content full-width" ref="content" :class="portifolioClasses">
             <div class="full-width row">
               <div class="col-12 col-md-4 row portifolio-page__content__profile-photo justify-center"
                 :class="profilePhotoClasses">
@@ -192,7 +201,8 @@ export default ({
   data() {
     return {
       scrollPosition: 0,
-      showGrettings: true
+      showGrettings: true,
+      showContent: false
     }
   },
 
@@ -205,6 +215,17 @@ export default ({
       return this.$q.screen.lt.md && 'items-center'
     },
 
+    portifolioContentStyles() {
+      return 'margin-top: 300px;'
+    },
+
+    portifolioClasses() {
+      return this.showContent && 'portifolio-page__content--fadeIn'
+    },
+
+    grettingsClasses() {
+      return this.$q.screen.lt.md ? 'text-body2' : 'text-h5'
+    },
 
     aboutMe() {
       return 'Olá sou Leonardo Marco. Tenho 28 anos e sou desenvolvedor frontend jr. Sou da cidade de Capela do alto - SP. Estou à procura de uma oportunidade de atuar como desenvolvedor front-end remoto ou presencial pela região de Sorocaba. Me formei em Análise e desenvolvimento de sistemas na Fatec de São Caetano do Sul em Dezembro de 2017. Criei este portifólio com o intuito de demonstrar meus conhecimentos e habilidades. Nele foi criado um projeto utilizando Vuejs em conjunto com Quasar sendo essas ferramentas as quais possuo maior domínio além de HTML, CSS, JS. Estou sempre aberto a estudar novas ferramentas e tecnologias, para assim ampliar meus conhecimentos.'
@@ -237,11 +258,17 @@ export default ({
       }, 18000)
     },
 
+    getArrowPosition() {
+      if (this.$refs.content.offsetTop <= this.$refs.parallax.scrollTop) this.showContent = true
+    },
+
     paralaxEffect() {
       const scrollEl = this.$refs.parallax
       if (this.scrollPosition !== scrollEl.scrollTop) {
         this.scrollPosition = scrollEl.scrollTop
       }
+
+      this.getArrowPosition()
     }
   }
 })
@@ -300,138 +327,11 @@ body {
         animation: fadeInOut 8s ease-in-out 8s;
       }
     }
-
-    @keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Firefox < 16 */
-    @-moz-keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Safari, Chrome and Opera > 12.1 */
-    @-webkit-keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Internet Explorer */
-    @-ms-keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Opera < 12.1 */
-    @-o-keyframes fadeInOut {
-      0% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Firefox < 16 */
-    @-moz-keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Safari, Chrome and Opera > 12.1 */
-    @-webkit-keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Internet Explorer */
-    @-ms-keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Opera < 12.1 */
-    @-o-keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
   }
 
   &__content {
+    opacity: 0;
+
     &__profile-photo {
       margin-bottom: -50px;
 
@@ -444,10 +344,19 @@ body {
     &__contact {
       background-color: #f04f30;
     }
-  }
 
-  &--background-1 {
-    background-color: #432133;
+    &--fadeIn {
+      opacity: 1;
+      -webkit-animation: fadeIn 1.5s ease-in-out;
+      /* Safari, Chrome and Opera > 12.1 */
+      -moz-animation: fadeIn 1.5s ease-in-out;
+      /* Firefox < 16 */
+      -ms-animation: fadeIn 1.5s ease-in-out;
+      /* Internet Explorer */
+      -o-animation: fadeIn 1.5s ease-in-out;
+      /* Opera < 12.1 */
+      animation: fadeIn 1.5s ease-in-out;
+    }
   }
 
   &__parallax-box {
@@ -538,5 +447,189 @@ html {
 a {
   color: inherit;
   text-decoration-color: var(--c6);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 </style>
