@@ -1,6 +1,6 @@
 <template>
   <div class="portifolio-page">
-    <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
+    <!-- <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
       <div class="portifolio-page__greetings__background bg-grey-8 absolute-full" />
       <div class="portifolio-page__greetings__text full-height text-white z-top absolute-full items-center"
         :class="grettingsClasses">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div ref="parallax" class="portifolio-page__parallax-box" @scroll="paralaxEffect">
       <div class="portifolio-page__parallax-box__box">
         <div class="portifolio-page__parallax-box__box__landscape">
@@ -145,10 +145,10 @@
 
 
         </div>
-        <div class="full-height relative-position justify-center items-center row">
+        <div class="full-height relative-position justify-center items-end row">
 
-          <q-icon ref="arrow" name="keyboard_double_arrow_down" class="q-mt-xl absolute-top-center" color="white"
-            size="xs" />
+          <q-icon ref="arrow" :style="arrowStyles" :class="arrowClasses" name="keyboard_double_arrow_down"
+            class="q-mt-xl absolute-top-center portifolio-page__arrow" size="sm" />
 
           <div class="row justify-center portifolio-page__content full-width" ref="content" :class="portifolioClasses">
             <div class="full-width row">
@@ -169,23 +169,56 @@
               </div>
             </div>
 
-            <div class="bg-grey-3 text-grey-9 q-py-lg row q-gutter-lg justify-center full-width">
+            <div class="bg-grey-3 text-grey-9 row q-gutter-lg justify-center full-width" :class="contentSectionClass">
               <div class="text-h5">Sobre mim</div>
-              <div class="q-mb-xl">{{ aboutMe }}</div>
+              <div class="q-mb-xl" v-html="aboutMe" />
+              <div class="full-width text-subtitle2 q-px-lg">Utilizei as seguintes tecnologias para a criação deste
+                projeto:
+              </div>
+              <div class="q-mb-lg row full-width">
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/html.png" />
+                </div>
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/css.png" />
+                </div>
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/js.png" />
+                </div>
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/vue.png" />
+                </div>
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/quasar.png" />
+                </div>
+                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+                  <q-img fit="contain" width="60px" height="60px" src="../assets/git.png" />
+                </div>
+              </div>
             </div>
 
+            <div class="q-py-lg q-px-md row text-white q-gutter-lg justify-center full-width">
+              <div class="q-mb-md">
+                <q-timeline color="deep-orange-8">
+                  <q-timeline-entry heading>
+                    <div class="text-h5">Experiência profissional</div>
+                  </q-timeline-entry>
 
-            <div class="bg-grey-3 q-py-lg row bg-separator q-gutter-lg justify-center full-width">
-              <div class="text-h5">Experiências</div>
-              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
-            </div>
-            <div class="bg-grey-3 q-py-lg row q-gutter-lg justify-center full-width">
-              <div class="text-h5">A estrada até aqui</div>
-              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
-            </div>
-            <div class="bg-grey-3 q-py-lg row q-gutter-lg justify-center full-width">
-              <div class="text-h5">Entre em contato comigo</div>
-              <!-- <div class="q-mb-xl">{{ aboutMe }}</div> -->
+                  <q-timeline-entry title="Desenvolvedor Front End Estágio/Jr na empresa Nogord.io"
+                    subtitle="Agosto 2017 - Janeiro 2019">
+                    <div>{{ nogordioText }}</div>
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Desenvolvedor Front End Freelancer na Savn" subtitle="Fevereiro Abril-2019">
+                    <div>{{ savnText }}</div>
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Desenvolvedor Front-end Jr na NAVE - Bild"
+                    subtitle="Abril 2020 - Fevereiro 2023">
+                    <div v-html="bildText" />
+                  </q-timeline-entry>
+                </q-timeline>
+              </div>
             </div>
           </div>
         </div>
@@ -223,12 +256,50 @@ export default ({
       return this.showContent && 'portifolio-page__content--fadeIn'
     },
 
+    arrowClasses() {
+      return this.showContent && 'portifolio-page__arrow--fadeOut'
+    },
+    
+    arrowStyles() {
+      return this.$q.screen.lt.sm && 'margin-top: 120px;'
+    },
+
     grettingsClasses() {
       return this.$q.screen.lt.md ? 'text-body2' : 'text-h5'
     },
 
+    contentSectionClass() {
+      return !this.$q.screen.lt.md && 'q-py-md'
+    },
+
     aboutMe() {
-      return 'Olá sou Leonardo Marco. Tenho 28 anos e sou desenvolvedor frontend jr. Sou da cidade de Capela do alto - SP. Estou à procura de uma oportunidade de atuar como desenvolvedor front-end remoto ou presencial pela região de Sorocaba. Me formei em Análise e desenvolvimento de sistemas na Fatec de São Caetano do Sul em Dezembro de 2017. Criei este portifólio com o intuito de demonstrar meus conhecimentos e habilidades. Nele foi criado um projeto utilizando Vuejs em conjunto com Quasar sendo essas ferramentas as quais possuo maior domínio além de HTML, CSS, JS. Estou sempre aberto a estudar novas ferramentas e tecnologias, para assim ampliar meus conhecimentos.'
+      return `Olá sou Leonardo Marco. Tenho 28 anos e sou desenvolvedor Front-end. Sou da cidade de Capela do alto - SP. Estou à procura de uma oportunidade de atuar como desenvolvedor front-end remoto ou presencial pela região de Sorocaba. 
+      <br>
+      Criei este portifólio com o intuito de demonstrar meus conhecimentos e habilidades. Nele utilizei Vuejs em conjunto com Quasar, sendo essas as ferramentas que possuo o maior domínio.`
+    },
+
+    nogordioText() {
+      return 'Na Nogordio fui responsável por criar layouts, refatorar telas do sistema antigo(angular II) para telas de uma versão nova(Vuejs) do sistema Nogord.io, um sistema de parametrização de regras de negócios. Além de desenvolver a Landing da Nogordio.'
+    },
+
+    savnText() {
+      return 'Atuei como freelancer na Savn desenvolvendo um projeto seed e também como suporte para o front-end em alguns serviços derivados deste projeto.'
+    },
+
+    bildText() {
+      return `Atuei como desenvolvedor Front-end jr no setor de inovação(NAVE) da construtora Bild. Fui um dos participantes do projeto intitulado como "Modular", utilizando as tecnologias Vuejs em conjunto com Quasar framework. Modular é um sistema dividido por módulos onde fiz parte do desenvolvimento de 4 módulos: 
+      <br>
+      <br>
+      <b>HUB</b> - Cadastro dos usuários do sistema
+      <br>
+      <b>Produto</b> - Cadastro dos empreendimentos
+      <br>
+      <b>CRM</b> - Cadastro de Leads e funil de vendas
+      <br>
+      <b>Vendas</b> - Controle de vendas.
+      <br>
+      <br>
+      Atuei no módulo de <b>CRM</b> a maior parte do tempo, nele criei um componente de funil de vendas semelhante ao Trello onde cada coluna consistia na fase(Quente/Frio) de vida do Lead, e cada card seria o leads cadastrado no módulo. Também ajudei no desenvolvimento do Asteroid um pacote de componentes criados pela Nave, centralizando assim o uso de componentes por todas as squads.`
     }
   },
 
@@ -342,7 +413,7 @@ body {
     }
 
     &__contact {
-      background-color: #f04f30;
+      background-color: var(--c6);
     }
 
     &--fadeIn {
@@ -365,11 +436,10 @@ body {
     overflow-y: scroll;
 
     &__box {
-      height: 200vh;
-
+      height: 280vh;
       &__landscape {
         background: var(--c1);
-        height: 60vh;
+        height: 65vh;
         overflow: hidden;
         position: relative;
 
@@ -410,6 +480,23 @@ body {
           }
         }
       }
+    }
+  }
+
+  &__arrow {
+    color: var(--c7);
+
+    &--fadeOut {
+      opacity: 0;
+      -webkit-animation: fadeOut 1.5s ease-in-out;
+      /* Safari, Chrome and Opera > 12.1 */
+      -moz-animation: fadeOut 1.5s ease-in-out;
+      /* Firefox < 16 */
+      -ms-animation: fadeOut 1.5s ease-in-out;
+      /* Internet Explorer */
+      -o-animation: fadeOut 1.5s ease-in-out;
+      /* Opera < 12.1 */
+      animation: fadeOut 1.5s ease-in-out;
     }
   }
 }
