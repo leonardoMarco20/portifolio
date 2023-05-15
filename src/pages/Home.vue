@@ -172,8 +172,7 @@
             <div class="bg-grey-3 text-grey-9 row q-gutter-lg justify-center full-width" :class="contentSectionClass">
               <div class="text-h5">Sobre mim</div>
               <div class="q-mb-xl" v-html="aboutMe" />
-              <div class="full-width text-subtitle2 q-px-lg">Utilizei as seguintes tecnologias para a criação deste
-                projeto:
+              <div class="full-width text-subtitle2 q-px-lg">As seguintes tecnologias são as que mais tenho domínio:
               </div>
               <div class="q-mb-lg row full-width">
                 <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
