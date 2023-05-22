@@ -1,0 +1,70 @@
+[debug] [2023-05-22T16:23:02.980Z] ----------------------------------------------------------------------
+[debug] [2023-05-22T16:23:02.983Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\leona\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-22T16:23:02.983Z] CLI Version:   11.26.0
+[debug] [2023-05-22T16:23:02.983Z] Platform:      win32
+[debug] [2023-05-22T16:23:02.983Z] Node Version:  v19.9.0
+[debug] [2023-05-22T16:23:02.983Z] Time:          Mon May 22 2023 13:23:02 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-05-22T16:23:02.984Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-22T16:23:02.987Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-05-22T16:23:03.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-22T16:23:03.115Z] > authorizing via signed-in user (leonardo.silva.marco@gmail.com)
+[debug] [2023-05-22T16:23:03.115Z] [iam] checking project portifolio-c1f7a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-22T16:23:03.117Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T16:23:03.117Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T16:23:03.117Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-22T16:23:24.221Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-05-22T16:23:24.222Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T16:23:24.223Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T16:23:24.223Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[warn] !  Unable to fetch the CLI MOTD and remote config. 
+[debug] [2023-05-22T16:23:24.233Z] Failed to fetch MOTD FirebaseError: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2023-05-22T16:23:45.281Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-05-22T16:23:50.304Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\leona\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-05-22T16:23:56.985Z] ----------------------------------------------------------------------
+[debug] [2023-05-22T16:23:56.988Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\leona\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-22T16:23:56.988Z] CLI Version:   11.26.0
+[debug] [2023-05-22T16:23:56.988Z] Platform:      win32
+[debug] [2023-05-22T16:23:56.988Z] Node Version:  v19.9.0
+[debug] [2023-05-22T16:23:56.988Z] Time:          Mon May 22 2023 13:23:56 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-05-22T16:23:56.989Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-22T16:23:56.991Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-05-22T16:23:57.092Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-22T16:23:57.093Z] > authorizing via signed-in user (leonardo.silva.marco@gmail.com)
+[debug] [2023-05-22T16:23:57.093Z] [iam] checking project portifolio-c1f7a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-22T16:23:57.094Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T16:23:57.094Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T16:23:57.094Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-22T16:24:19.579Z] ----------------------------------------------------------------------
+[debug] [2023-05-22T16:24:19.582Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\leona\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-22T16:24:19.583Z] CLI Version:   11.26.0
+[debug] [2023-05-22T16:24:19.583Z] Platform:      win32
+[debug] [2023-05-22T16:24:19.583Z] Node Version:  v19.9.0
+[debug] [2023-05-22T16:24:19.583Z] Time:          Mon May 22 2023 13:24:19 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-05-22T16:24:19.583Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-22T16:24:19.586Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-05-22T16:24:19.692Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-22T16:24:19.692Z] > authorizing via signed-in user (leonardo.silva.marco@gmail.com)
+[debug] [2023-05-22T16:24:19.693Z] [iam] checking project portifolio-c1f7a for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-22T16:24:19.693Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T16:24:19.694Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T16:24:19.694Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[warn] !  Unable to fetch the CLI MOTD and remote config. 
+[debug] [2023-05-22T16:24:40.744Z] Failed to fetch MOTD FirebaseError: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2023-05-22T16:24:40.765Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-05-22T16:24:40.766Z] > refreshing access token with scopes: []
+[debug] [2023-05-22T16:24:40.767Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-22T16:24:40.767Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
