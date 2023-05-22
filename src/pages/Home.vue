@@ -1,6 +1,6 @@
 <template>
   <div class="portifolio-page">
-    <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
+    <!-- <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
       <div class="portifolio-page__greetings__background bg-grey-8 absolute-full" />
       <div class="portifolio-page__greetings__text full-height text-white z-top absolute-full items-center"
         :class="grettingsClasses">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div ref="parallax" class="portifolio-page__parallax-box" @scroll="paralaxEffect">
       <div class="portifolio-page__parallax-box__box">
         <div class="portifolio-page__parallax-box__box__landscape">
@@ -160,22 +160,27 @@
               </div>
 
               <div class="flex text-white q-py-lg justify-end q-my-md col-grow column" :class="profileContentClasses">
-                <div class="text-h5">Leonardo da Silva Marco</div>
-                <div class="text-subtitle1">Programador Front-end</div>
-                <div>
-                  <q-btn dense target="_blank" class="q-mt-sm text-subtitle1 portifolio-page__content__contact"
-                    href="https://wa.me/5511997822730" label="Contato" />
+                <div v-if="$q.screen.lt.sm" class="text-h5">Leonardo da Silva Marco</div>
+                <div v-if="$q.screen.lt.sm" class="text-subtitle1 text-center">Programador Front-end</div>
+                <div v-else class="text-h5">Leonardo da Silva Marco - Programador Front-end</div>
+                <div class="text-subtitle1">Email: leonardo.silva.marco@gmail.com</div>
+                <div class="full-width row" :class="mobileBtnClass">
+                  <q-btn dense target="_blank"
+                    class="col-12 col-md-3 q-mt-sm text-subtitle1 portifolio-page__content__contact"
+                    href="https://wa.me/5511997822730" label="Contate-me" />
+                  <q-btn :class="downloadClass" dense outline target="_blank" icon-right="file_download"
+                    class="col-12 col-md-3 q-mt-sm q-ml-md-sm text-subtitle1 portifolio-page__content__contact--outline"
+                    to="curriculo-leonardo-marco.pdf" label="Download CV" />
                 </div>
               </div>
             </div>
 
             <div class="bg-grey-3 text-grey-9 row q-gutter-lg justify-center full-width" :class="contentSectionClass">
               <div class="text-h5">Sobre mim</div>
-              <div class="q-mb-xl" v-html="aboutMe" />
-              <div class="full-width text-subtitle2 q-px-lg">As seguintes tecnologias são as que mais tenho domínio:
-              </div>
-              <div class="q-mb-lg row full-width">
-                <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
+              <div class="" v-html="aboutMe" />
+
+              <div class="row full-width">
+                <div class="flex column col-12 q-mb-lg col-sm-2 justify-center items-center">
                   <q-img fit="contain" width="60px" height="60px" src="../assets/html.png" />
                 </div>
                 <div class="flex column col-12 col-sm-2 q-mb-lg justify-center items-center">
@@ -194,6 +199,7 @@
                   <q-img fit="contain" width="60px" height="60px" src="../assets/git.png" />
                 </div>
               </div>
+              <div class="full-width text-subtitle2 q-pa-lg" v-html="thanksText" />
             </div>
 
             <div class="q-py-lg q-px-md row text-white q-gutter-lg justify-center full-width">
@@ -203,18 +209,18 @@
                     <div class="text-h5">Experiência profissional</div>
                   </q-timeline-entry>
 
-                  <q-timeline-entry title="Desenvolvedor Front End Estágio/Jr na empresa Nogord.io"
-                    subtitle="Agosto 2017 - Janeiro 2019">
-                    <div>{{ nogordioText }}</div>
+                  <q-timeline-entry title="Desenvolvedor Front-end Jr na NAVE - Bild"
+                    subtitle="Abril 2020 - Fevereiro 2023">
+                    <div v-html="bildText" />
                   </q-timeline-entry>
 
                   <q-timeline-entry title="Desenvolvedor Front End Freelancer na Savn" subtitle="Fevereiro Abril-2019">
                     <div>{{ savnText }}</div>
                   </q-timeline-entry>
 
-                  <q-timeline-entry title="Desenvolvedor Front-end Jr na NAVE - Bild"
-                    subtitle="Abril 2020 - Fevereiro 2023">
-                    <div v-html="bildText" />
+                  <q-timeline-entry title="Desenvolvedor Front End Estágio/Jr na empresa Nogord.io"
+                    subtitle="Agosto 2017 - Janeiro 2019">
+                    <div>{{ nogordioText }}</div>
                   </q-timeline-entry>
                 </q-timeline>
               </div>
@@ -258,7 +264,7 @@ export default ({
     arrowClasses() {
       return this.showContent && 'portifolio-page__arrow--fadeOut'
     },
-    
+
     arrowStyles() {
       return this.$q.screen.lt.sm && 'margin-top: 120px;'
     },
@@ -271,14 +277,32 @@ export default ({
       return !this.$q.screen.lt.md && 'q-py-md'
     },
 
+    mobileBtnClass() {
+      return this.$q.screen.lt.md && 'q-pa-sm'
+    },
+
+    downloadClass() {
+      return this.$q.screen.gt.sm && 'q-ml-sm'
+    },
+
     aboutMe() {
-      return `Olá sou Leonardo Marco. Tenho 28 anos e sou desenvolvedor Front-end. Sou da cidade de Capela do alto - SP. Estou à procura de uma oportunidade de atuar como desenvolvedor front-end remoto ou presencial pela região de Sorocaba. 
+      return `Olá, sou Leonardo Marco, um desenvolvedor Front-end de 28 anos. Sou natural de Capela do Alto - SP e atualmente estou em busca de uma oportunidade para atuar como desenvolvedor front-end, tanto de forma remota quanto presencial, na região de Sorocaba.
       <br>
-      Criei este portifólio com o intuito de demonstrar meus conhecimentos e habilidades. Nele utilizei Vuejs em conjunto com Quasar, sendo essas as ferramentas que possuo o maior domínio.`
+      Criei este portifólio com o objetivo de demonstrar meus conhecimentos e habilidades. Durante sua criação, utilizei Vue.js em conjunto com Quasar, sendo essas as ferramentas nas quais possuo maior domínio.
+      <br>
+      <br>
+      Além disso, possuo conhecimentos sólidos em outras tecnologias, como:`
+    },
+
+    thanksText() {
+      return `Busco uma oportunidade de atuar como desenvolvedor Front-end, visando expandir minhas habilidades e compartilhar meus conhecimentos. Tenho uma mentalidade aberta e estou constantemente em busca de aprender novas tecnologias e acompanhar as últimas tendências do setor. 
+      Estou confiante de que meu entusiasmo e dedicação me permitem evoluir rapidamente e enfrentar novos desafios com facilidade.
+      <br><br>
+      Agradeço a oportunidade de apresentar meu trabalho e estou à disposição para mais informações.`
     },
 
     nogordioText() {
-      return 'Na Nogordio fui responsável por criar layouts, refatorar telas do sistema antigo(angular II) para telas de uma versão nova(Vuejs) do sistema Nogord.io, um sistema de parametrização de regras de negócios. Além de desenvolver a Landing da Nogordio.'
+      return 'O sistema consiste em automatização de regras de decisão usando fluxogramas através de um studio eliminando assim a necessidade de codificação. Nele fui responsável por criar layouts, refatorar telas do sistema antigo(angular II) para telas de uma versão nova(Vuejs). Além de desenvolver a Landing da Nogordio.'
     },
 
     savnText() {
@@ -286,7 +310,7 @@ export default ({
     },
 
     bildText() {
-      return `Atuei como desenvolvedor Front-end jr no setor de inovação(NAVE) da construtora Bild. Fui um dos participantes do projeto intitulado como "Modular", utilizando as tecnologias Vuejs em conjunto com Quasar framework. Modular é um sistema dividido por módulos onde fiz parte do desenvolvimento de 4 módulos: 
+      return `Atuei como desenvolvedor Front-end jr no setor de inovação(NAVE) da construtora Bild, foi aqui onde fui apresentado ao Framwork Quasar e desenvolvi grande parte dos conheciemntos e habilidades que possuo hoje. Fui um dos participantes do projeto intitulado como "Modular", utilizando as tecnologias Vuejs em conjunto com Quasar framework. No Modular um sistema dividido por módulos atuei no desenvolvimento de 4 módulos: 
       <br>
       <br>
       <b>HUB</b> - Cadastro dos usuários do sistema
@@ -298,7 +322,9 @@ export default ({
       <b>Vendas</b> - Controle de vendas.
       <br>
       <br>
-      Atuei no módulo de <b>CRM</b> a maior parte do tempo, nele criei um componente de funil de vendas semelhante ao Trello onde cada coluna consistia na fase(Quente/Frio) de vida do Lead, e cada card seria o leads cadastrado no módulo. Também ajudei no desenvolvimento do Asteroid um pacote de componentes criados pela Nave, centralizando assim o uso de componentes por todas as squads.`
+      Atuei no módulo de <b>CRM</b> a maior parte do tempo, nele criei um componente de funil de vendas, utilizando a lib sortable.js semelhante ao Trello, onde cada coluna consistia na fase(Quente/Frio) de vida do Lead, e cada card seria o leads cadastrado no módulo. 
+      <br>
+      Além disso ajudei no desenvolvimento do Asteroid, criado internamente pela Nave, é um pacote de componentes baseados nos componentes já existentes no Quasar, centralizando assim o uso dos componentes, layouts e tipografia por todas as squads.`
     }
   },
 
@@ -413,6 +439,10 @@ body {
 
     &__contact {
       background-color: var(--c6);
+
+      &--outline {
+        color: var(--c6);
+      }
     }
 
     &--fadeIn {
@@ -436,6 +466,7 @@ body {
 
     &__box {
       height: 280vh;
+
       &__landscape {
         background: var(--c1);
         height: 65vh;
