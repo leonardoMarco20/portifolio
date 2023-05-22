@@ -1,6 +1,6 @@
 <template>
   <div class="portifolio-page">
-    <!-- <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
+    <div v-if="showGrettings" class="portifolio-page__greetings z-top absolute-full ">
       <div class="portifolio-page__greetings__background bg-grey-8 absolute-full" />
       <div class="portifolio-page__greetings__text full-height text-white z-top absolute-full items-center"
         :class="grettingsClasses">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div ref="parallax" class="portifolio-page__parallax-box" @scroll="paralaxEffect">
       <div class="portifolio-page__parallax-box__box">
         <div class="portifolio-page__parallax-box__box__landscape">
