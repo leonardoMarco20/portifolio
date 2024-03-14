@@ -352,7 +352,7 @@ export default ({
     grettings() {
       setTimeout(() => {
         this.showGrettings = false
-      }, 18000)
+      }, 16000)
     },
 
     getArrowPosition() {
@@ -381,15 +381,15 @@ body {
 .portifolio-page {
   &__greetings {
     opacity: 1;
-    -webkit-animation: fadeOut 2s ease-in-out 16s;
+    -webkit-animation: fadeOut 4s ease-in-out 12s;
     /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadeOut 2s ease-in-out 16s;
+    -moz-animation: fadeOut 4s ease-in-out 12s;
     /* Firefox < 16 */
-    -ms-animation: fadeOut 2s ease-in-out 16s;
+    -ms-animation: fadeOut 4s ease-in-out 12s;
     /* Internet Explorer */
-    -o-animation: fadeOut 2s ease-in-out 16s;
+    -o-animation: fadeOut 4s ease-in-out 12s;
     /* Opera < 12.1 */
-    animation: fadeOut 2s ease-in-out 16s;
+    animation: fadeOut 4s ease-in-out 12s;
 
     &__background {
       opacity: .4;
@@ -400,28 +400,28 @@ body {
 
       &__hello {
         opacity: 0;
-        -webkit-animation: fadeInOut 4s ease-in-out;
+        -webkit-animation: fadeInOut 6s ease-in-out;
         /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadeInOut 4s ease-in-out;
+        -moz-animation: fadeInOut 6s ease-in-out;
         /* Firefox < 16 */
-        -ms-animation: fadeInOut 4s ease-in-out;
+        -ms-animation: fadeInOut 6s ease-in-out;
         /* Internet Explorer */
-        -o-animation: fadeInOut 4s ease-in-out;
+        -o-animation: fadeInOut 6s ease-in-out;
         /* Opera < 12.1 */
-        animation: fadeInOut 4s ease-in-out;
+        animation: fadeInOut 6s ease-in-out;
       }
 
       &__welcome {
         opacity: 0;
-        -webkit-animation: fadeInOut 8s ease-in-out 8s;
+        -webkit-animation: fadeInOut 6s ease-in-out 6s;
         /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadeInOut 8s ease-in-out 8s;
+        -moz-animation: fadeInOut 6s ease-in-out 6s;
         /* Firefox < 16 */
-        -ms-animation: fadeInOut 8s ease-in-out 8s;
+        -ms-animation: fadeInOut 6s ease-in-out 6s;
         /* Internet Explorer */
-        -o-animation: fadeInOut 8s ease-in-out 8s;
+        -o-animation: fadeInOut 6s ease-in-out 6s;
         /* Opera < 12.1 */
-        animation: fadeInOut 8s ease-in-out 8s;
+        animation: fadeInOut 6s ease-in-out 6s;
       }
     }
   }
@@ -480,7 +480,7 @@ body {
           height: 100%;
           left: 0;
           position: absolute;
-          top: 0;
+          top: 1px;
           width: 100%;
 
           // parallax
