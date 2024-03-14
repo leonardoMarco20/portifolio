@@ -287,7 +287,7 @@ export default ({
     },
 
     aboutMe() {
-      return `Olá, sou Leonardo Marco, um desenvolvedor Front-end de 28 anos. Moro atualmente em Capela do Alto - SP e atualmente estou em busca de uma oportunidade para atuar como desenvolvedor front-end, tanto de forma remota quanto presencial, na região de Sorocaba.
+      return `Olá, sou Leonardo Marco, um desenvolvedor Front-end de 29 anos. Moro atualmente em Capela do Alto - SP e atualmente estou em busca de uma oportunidade para atuar como desenvolvedor front-end, tanto de forma remota quanto presencial, na região de Sorocaba.
       <br>
       Criei este portifólio com o objetivo de demonstrar meus conhecimentos e habilidades. Durante sua criação, utilizei Vue.js em conjunto com Quasar, sendo essas as ferramentas nas quais possuo maior domínio.
       <br>
