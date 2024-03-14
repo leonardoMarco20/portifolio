@@ -5,7 +5,8 @@
       <div class="portifolio-page__greetings__text full-height text-white z-top absolute-full items-center"
         :class="grettingsClasses">
         <div class="relative-position fit row">
-          <div class="absolute-center row full-width justify-center portifolio-page__greetings__text__hello">Olá, meu nome
+          <div class="absolute-center row full-width justify-center portifolio-page__greetings__text__hello">Olá, meu
+            nome
             é Leonardo.
           </div>
           <div class="absolute-center row full-width justify-center portifolio-page__greetings__text__welcome">Seja bem
@@ -165,9 +166,9 @@
                 <div v-else class="text-h5">Leonardo da Silva Marco - Programador Front-end</div>
                 <div class="text-subtitle1">Email: leonardo.silva.marco@gmail.com</div>
                 <div class="full-width row" :class="mobileBtnClass">
-                  <q-btn dense target="_blank"
+                  <!-- <q-btn dense target="_blank"
                     class="col-12 col-md-3 q-mt-sm text-subtitle1 portifolio-page__content__contact"
-                    href="https://wa.me/5511997822730" label="Contate-me" />
+                    href="https://wa.me/5511997822730" label="Contate-me" /> -->
                   <q-btn :class="downloadClass" dense outline target="_blank" icon-right="file_download"
                     class="col-12 col-md-3 q-mt-sm q-ml-md-sm text-subtitle1 portifolio-page__content__contact--outline"
                     to="curriculo-leonardo-marco.pdf" label="Download CV" />
