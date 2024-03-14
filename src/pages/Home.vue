@@ -400,15 +400,15 @@ body {
 
       &__hello {
         opacity: 0;
-        -webkit-animation: fadeInOut 8s ease-in-out;
+        -webkit-animation: fadeInOut 4s ease-in-out;
         /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadeInOut 8s ease-in-out;
+        -moz-animation: fadeInOut 4s ease-in-out;
         /* Firefox < 16 */
-        -ms-animation: fadeInOut 8s ease-in-out;
+        -ms-animation: fadeInOut 4s ease-in-out;
         /* Internet Explorer */
-        -o-animation: fadeInOut 8s ease-in-out;
+        -o-animation: fadeInOut 4s ease-in-out;
         /* Opera < 12.1 */
-        animation: fadeInOut 8s ease-in-out;
+        animation: fadeInOut 4s ease-in-out;
       }
 
       &__welcome {
