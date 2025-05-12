@@ -210,6 +210,16 @@
                     <div class="text-h5">Experiência profissional</div>
                   </q-timeline-entry>
 
+                  <q-timeline-entry title="Library Vue Components – (Em Desenvolvimento)"
+                    subtitle=" @leomarco/leo-marco-lib">
+                    <div v-html="libText" />
+                  </q-timeline-entry>
+
+                  <q-timeline-entry title="Coffeezinho – Projeto Pessoal de Automação com IA"
+                    subtitle="https://www.coffeezinho.com.br">
+                    <div v-html="coffeeText" />
+                  </q-timeline-entry>
+
                   <q-timeline-entry title="Desenvolvedor Front-end Jr na NAVE - Bild"
                     subtitle="Abril 2020 - Fevereiro 2023">
                     <div v-html="bildText" />
@@ -296,7 +306,22 @@ export default ({
     },
 
     thanksText() {
-      return `Busco uma oportunidade de atuar como desenvolvedor Front-end, visando expandir minhas habilidades e compartilhar meus conhecimentos. Tenho uma mentalidade aberta e estou constantemente em busca de aprender novas tecnologias e acompanhar as últimas tendências do setor. 
+      return `
+      <b>Habilidades Técnicas Complementares</b>
+      <ul>
+        <li>JavaScript Avançado (DOM Manipulation, Bots)</li>
+        <li>IA Generativa aplicada ao Desenvolvimento Web (ChatGPT, Gemini)</li>
+        <li>Geração de Conteúdo e Imagens com IA</li>
+        <li>CMS Headless (Payload)</li>
+        <li>Arquitetura Serverless / JAMstack</li>
+        <li>Firebase Hosting</li>
+        <li>Automação de criação de páginas estáticas</li>
+        <li>Integração de APIs REST</li>
+        <li>Otimização e boas práticas de SEO</li>
+        <li>Automação em geração de conteúdo e imagens com IA
+</li>
+      </ul><br><br>  
+      Busco uma oportunidade de atuar como desenvolvedor Front-end, visando expandir minhas habilidades e compartilhar meus conhecimentos. Tenho uma mentalidade aberta e estou constantemente em busca de aprender novas tecnologias e acompanhar as últimas tendências do setor. 
       Estou confiante de que meu entusiasmo e dedicação me permitem evoluir rapidamente e enfrentar novos desafios com facilidade.
       <br><br>
       Agradeço a oportunidade de apresentar meu trabalho e estou à disposição para mais informações.`
@@ -326,6 +351,20 @@ export default ({
       Atuei no módulo de <b>CRM</b> a maior parte do tempo, nele criei um componente de funil de vendas, utilizando a lib sortable.js semelhante ao Trello, onde cada coluna consistia na fase(Quente/Frio) de vida do Lead, e cada card seria o leads cadastrado no módulo. 
       <br>
       Além disso ajudei no desenvolvimento do Asteroid, criado internamente pela Nave, é um pacote de componentes baseados nos componentes já existentes no Quasar, centralizando assim o uso dos componentes, layouts e tipografia por todas as squads.`
+    },
+
+    coffeeText() {
+      return ` Desenvolvi um site com geração automática de páginas estáticas a partir de comandos em linguagem natural, utilizando JavaScript e integração com bots de IA (ChatGPT/Gemini).
+ Implementei bots em JavaScript para manipular o DOM, consumir APIs de IA generativa e criar conteúdo textual e visual, publicando automaticamente via CMS (Payload).<br>
+ Automatizei todo o fluxo, desde o prompt até a publicação final, com estrutura serverless, CMS headless e front-end hospedado no Firebase.`
+    },
+
+    libText() {
+      return `
+        Projeto de estudo focado na criação de bibliotecas reutilizáveis de componentes em Vue.js, com ênfase em boas práticas de componentização e escalabilidade de interfaces.<br>
+        Utilizo o Storybook para documentação interativa dos componentes, facilitando testes visuais e integração por outros desenvolvedores.<br>
+        A biblioteca foi publicada no npm, o que permitiu estudar também o processo de empacotamento e distribuição de pacotes.<br>
+        O objetivo principal é aprofundar meus conhecimentos em arquitetura de design system e criação de UIs modulares reutilizáveis para projetos futuros.`
     }
   },
 
