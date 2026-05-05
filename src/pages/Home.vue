@@ -210,13 +210,18 @@
                     <div class="text-h5">Experiência profissional</div>
                   </q-timeline-entry>
 
+                  <q-timeline-entry title="Achadins – Projeto Pessoal de Automação com IA"
+                    subtitle="https://achadins.com.br/">
+                    <div v-html="achadinsText" />
+                  </q-timeline-entry>
+
                   <q-timeline-entry title="Library Vue Components – (Em Desenvolvimento)"
                     subtitle=" @leomarco/leo-marco-lib">
                     <div v-html="libText" />
                   </q-timeline-entry>
 
                   <q-timeline-entry title="Coffeezinho – Projeto Pessoal de Automação com IA"
-                    subtitle="https://www.coffeezinho.com.br">
+                    subtitle="https://the-cafe-59279.web.app/">
                     <div v-html="coffeeText" />
                   </q-timeline-entry>
 
@@ -251,7 +256,8 @@ export default ({
     return {
       scrollPosition: 0,
       showGrettings: true,
-      showContent: false
+      showContent: false,
+      isFirstVisit: true
     }
   },
 
@@ -353,6 +359,10 @@ export default ({
       Além disso ajudei no desenvolvimento do Asteroid, criado internamente pela Nave, é um pacote de componentes baseados nos componentes já existentes no Quasar, centralizando assim o uso dos componentes, layouts e tipografia por todas as squads.`
     },
 
+    achadinsText() {
+      return `Projeto autoral focado na automação de geração e publicação de conteúdo. O trabalho envolve o desenvolvimento de pipelines automatizados em JavaScript, além da manipulação de DOM e integração com APIs externas. Também inclui o uso de inteligência artificial generativa, como ChatGPT e Gemini, como suporte na criação de conteúdo. O sistema é capaz de estruturar páginas dinâmicas a partir de inputs e integra-se com um CMS headless (Payload). A arquitetura é baseada em conceitos de JAMstack e serverless, com foco em automação de processos, reutilização de código e escalabilidade.`
+    },
+
     coffeeText() {
       return ` Desenvolvi um site com geração automática de páginas estáticas a partir de comandos em linguagem natural, utilizando JavaScript e integração com bots de IA (ChatGPT/Gemini).
  Implementei bots em JavaScript para manipular o DOM, consumir APIs de IA generativa e criar conteúdo textual e visual, publicando automaticamente via CMS (Payload).<br>
@@ -369,8 +379,12 @@ export default ({
   },
 
   mounted() {
+    this.handleFirstVisit()
     this.paralaxEffect()
-    this.grettings()
+
+    if (this.isFirstVisit) {
+      this.grettings()
+    }
   },
 
   watch: {
@@ -388,6 +402,20 @@ export default ({
   },
 
   methods: {
+    handleFirstVisit() {
+      const key = 'portfolio_visited'
+      const visited = localStorage.getItem(key)
+
+      if (visited) {
+        this.isFirstVisit = false
+        this.showGrettings = false
+        return
+      }
+
+      localStorage.setItem(key, 'true')
+      this.isFirstVisit = true
+    },
+
     grettings() {
       setTimeout(() => {
         this.showGrettings = false
